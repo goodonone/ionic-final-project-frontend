@@ -242,3 +242,12 @@ html {
    */
   --ion-dynamic-font: var(--ion-default-dynamic-font);
 }
+
+@font-face {
+  font-family: 'Ubuntu', sans-serif;
+  src: url("src/assets/fonts/Ubuntu-Medium.ttf") format('ttf');
+}
+
+*{
+  font-family: "Ubuntu";
+}
