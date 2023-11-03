@@ -7,6 +7,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-toolbar *ngIf="tasksList.length>0" color="light" class="ion-text-center">
+    <ion-title class="completed">
+      Pending Tasks
+    </ion-title>
+  </ion-toolbar>
 
   <!-- <ion-list *ngIf="tasksList">
       <ion-item *ngFor="let task of tasksList">
@@ -18,16 +23,16 @@
 
   <div *ngIf="tasksList">
     <ion-list *ngFor="let task of tasksList">
-      <ion-item-sliding>
+      <ion-item-sliding *ngIf="task.completed==false">
 
-        <ion-item>
-          <ion-checkbox color="danger" value="task.completed" name="completed"
-            (click)="onChange(completed)">{{task.completed}}</ion-checkbox>
-          <ion-label>{{task.title}}</ion-label>
-        </ion-item>
-
+          <ion-item>
+            <ion-checkbox color="danger" value="task.completed" name="completed"
+              (click)="onChange(completed); edit(taskId)">{{task.completed}}</ion-checkbox>
+            <ion-label>{{task.title}}</ion-label>
+          </ion-item>
+        
         <ion-item-options side="end">
-          <ion-item-option color="danger">
+          <ion-item-option color="danger" (click)="delete(taskId)">
             <ion-icon slot="icon-only" name="trash"></ion-icon>
           </ion-item-option>
         </ion-item-options>
