@@ -29,3 +29,26 @@
 .title{
   font-size: 30px;
 }
+
+ion-checkbox {
+  --size: 32px;
+  --checkbox-background-checked: #15ec80;
+}
+
+ion-checkbox::part(container) {
+  border-radius: 6px;
+  border: 2px solid #ec1515;
+}
+
+// ion-fab-button{
+//   background-color: #15ec80;
+//   color: black;
+// }
+
+ion-fab{
+  padding: 20px;
+}
+
+.completed{
+  font-size: 20px;
+}

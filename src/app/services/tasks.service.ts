@@ -11,7 +11,6 @@ export class TasksService {
 
   baseURL: string = "http://localhost:5059/api/Tasks";
 
-
   getAllTasks() {
     return this.http.get<Task[]>(this.baseURL);
   }
