@@ -6,60 +6,68 @@
   </ion-toolbar>
 </ion-header>
 
+<!--Pending Tasks Section-->
+
 <ion-content [fullscreen]="true">
-  <ion-toolbar *ngIf="tasksList.length>0" color="light" class="ion-text-center">
-    <ion-title class="completed">
+  <ion-toolbar *ngIf="incompleteTasks.length>0" color="light" class="ion-text-center">
+    <ion-title>
       Pending Tasks
     </ion-title>
   </ion-toolbar>
-
-  <!-- <ion-list *ngIf="tasksList">
-      <ion-item *ngFor="let task of tasksList">
-        <ion-checkbox color="danger" value="completed"
-          name="completed">{{task.title}}</ion-checkbox>
-        <ion-label (click)="onChange(completed)">{{task.completed}}</ion-label>
-      </ion-item>
-    </ion-list> -->
 
   <div *ngIf="tasksList">
     <ion-list *ngFor="let task of tasksList">
       <ion-item-sliding *ngIf="task.completed==false">
 
-          <ion-item>
-            <ion-checkbox color="danger" value="task.completed" name="completed"
-              (click)="onChange(completed); edit(taskId)">{{task.completed}}</ion-checkbox>
-            <ion-label>{{task.title}}</ion-label>
-          </ion-item>
-        
+        <ion-item>
+          <ion-checkbox color="danger" checked={{task.completed}}
+            (click)="update(task.taskId!)">{{task.title}}</ion-checkbox>
+          <ion-label>
+            {{task.completed}}</ion-label>
+        </ion-item>
+
         <ion-item-options side="end">
-          <ion-item-option color="danger" (click)="delete(taskId)">
-            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          <ion-item-option color="danger">
+            <ion-icon slot="icon-only" name="trash" (click)="delete(task.taskId!)"></ion-icon>
           </ion-item-option>
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>
   </div>
 
-  <div *ngIf="completedTasks.length==1">
+  <!--Completed Tasks Section-->
+
+  <div *ngIf="completedTasks.length>0">
     <ion-toolbar color="light" class="ion-text-center">
-      <ion-title class="completed">
+      <ion-title>
         Completed Tasks
       </ion-title>
     </ion-toolbar>
     <ion-list>
-      <ion-item *ngFor="let t of completedTasks">
-        <ion-label>{{t.title}}</ion-label>
-        <ion-checkbox checked="true"></ion-checkbox>
-      </ion-item>
+      <ion-item-sliding *ngFor="let t of completedTasks">
+        <ion-item>
+          <ion-checkbox checked="true" (click)="update(t.taskId!)">{{t.title}}</ion-checkbox>
+          <ion-label>{{t.completed}}</ion-label>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="danger">
+            <ion-icon slot="icon-only" name="trash" (click)="delete(t.taskId!)"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
     </ion-list>
   </div>
 
-  <!-- Still to Implement: the slide delete and the clear the completed tasks and put in the completed tasks area-->
 
-  <ion-fab horizontal="end" vertical="bottom">
-    <ion-fab-button color="success" (click)="prompt()">
+  <!--Add Task Floating Button-->
+
+<div class="footer"> 
+  <ion-fab horizontal="end" vertical="bottom" class="footer">
+    <ion-fab-button color="success" (click)="addTask()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+</div>
+  
 
 </ion-content>

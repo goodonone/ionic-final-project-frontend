@@ -9,7 +9,7 @@ export class TasksService {
 
   constructor(private http: HttpClient) { }
 
-  baseURL: string = "http://localhost:5059/api/Tasks";
+  baseURL: string = "http://localhost:5059/api/task";
 
   getAllTasks() {
     return this.http.get<Task[]>(this.baseURL);
@@ -19,8 +19,11 @@ export class TasksService {
     return this.http.get<Task>(this.baseURL + "/" + taskId);
   }
 
-  createTask(newTask: Task) {
-    return this.http.post(this.baseURL, newTask);
+  createTask(title: string) {
+    const req = {
+    title
+    }
+    return this.http.post(this.baseURL, req);
   }
 
   updateTask(updatedTask: Task) {
