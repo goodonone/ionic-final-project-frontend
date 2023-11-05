@@ -28,6 +28,7 @@
 
 .title{
   font-size: 27px;
+  background-color:#15ec80;
 }
 
 ion-checkbox {
@@ -36,17 +37,15 @@ ion-checkbox {
 }
 
 ion-checkbox::part(container) {
-  border-radius: 6px;
-  --checkbox-border-checked: 2px solid #15ec80;
+  border-radius: 9px;
 }
 
 ion-fab{
-  padding: 20px;
+  padding: 10px;
   position: fixed;
-  // margin-top:50vh;
 }
 
-// .footer{
-//   margin-top: 100px;
-// }
+ion-item-option{
+  background-color:#f51515;
+}
 

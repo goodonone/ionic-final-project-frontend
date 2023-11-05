@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="success" class="ion-text-center">
+  <ion-toolbar class="ion-text-center">
     <ion-title class="title">
       TASK MASTER
     </ion-title>
@@ -15,19 +15,19 @@
     </ion-title>
   </ion-toolbar>
 
-  <div *ngIf="tasksList">
-    <ion-list *ngFor="let task of tasksList">
+  <div *ngIf="incompleteTasks">
+    <ion-list *ngFor="let task of incompleteTasks">
       <ion-item-sliding *ngIf="task.completed==false">
 
         <ion-item>
-          <ion-checkbox color="danger" checked={{task.completed}}
+          <ion-checkbox checked={{task.completed}}
             (click)="update(task.taskId!)">{{task.title}}</ion-checkbox>
           <ion-label>
             {{task.completed}}</ion-label>
         </ion-item>
 
         <ion-item-options side="end">
-          <ion-item-option color="danger">
+          <ion-item-option>
             <ion-icon slot="icon-only" name="trash" (click)="delete(task.taskId!)"></ion-icon>
           </ion-item-option>
         </ion-item-options>
@@ -50,7 +50,7 @@
           <ion-label>{{t.completed}}</ion-label>
         </ion-item>
         <ion-item-options side="end">
-          <ion-item-option color="danger">
+          <ion-item-option>
             <ion-icon slot="icon-only" name="trash" (click)="delete(t.taskId!)"></ion-icon>
           </ion-item-option>
         </ion-item-options>
@@ -63,7 +63,7 @@
 
 <div class="footer"> 
   <ion-fab horizontal="end" vertical="bottom" class="footer">
-    <ion-fab-button color="success" (click)="addTask()">
+    <ion-fab-button color="dark" (click)="addTask()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

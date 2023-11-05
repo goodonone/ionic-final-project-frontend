@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TasksService } from '../services/tasks.service';
 import { Task } from '../models/task';
-import { DialogService } from '../services/dialog.service';
 import { Dialog } from '@capacitor/dialog';
-
 
 
 @Component({
@@ -25,7 +23,7 @@ export class HomePage implements OnInit {
 
   elementPos: number = 0;
 
-  constructor(private tasksService: TasksService, private dialogService: DialogService) { }
+  constructor(private tasksService: TasksService) { }
 
   ngOnInit(): void {
     this.refreshTasks();
@@ -51,7 +49,7 @@ export class HomePage implements OnInit {
   addTask() {
     Dialog.prompt({
       title: 'Add New Task',
-      message: 'Task Title',
+      message: 'Task Name',
     }).then(result => {
       this.tasksService.createTask(result.value).subscribe(() => this.refreshTasks());
     })
